@@ -1,0 +1,71 @@
+html {
+  background: linear-gradient(153deg, rgba(97, 93, 173, 1) 35%, rgba(255, 200, 218, 1) 100%) fixed;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+}
+
+button {
+  color: white;
+  background-color: #1fcca4;
+}
+
+.uvodni_container {
+  width: 430px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+}
+
+.uvodni_name {
+  font-size: 3rem;
+  font-family: 'Lobster Two';
+  font-weight: 900;
+  padding: 5% 15% 5% 15%;
+
+}
+
+.uvodni_text,
+.uvodni_name {
+  background-color: #283e50;
+  width: 100%;
+}
+
+.uvodni_text {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.5rem;
+  font-weight: 300;
+  padding: 2% 5% 10% 5%;
+}
+
+.uvod_img {
+  width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.button {
+  width: 100%;
+  background-color: #1fcca4;
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 4%;
+}
+
+.button:hover {
+  background-color: #1cbb96;
+}
+
+.button--play {
+  background-color: #0197f6;
+  border-top: 1px solid grey;
+}
+
+.button--play:hover {
+  background-color: #0090e9;
+}
