@@ -11,11 +11,12 @@ button {
 }
 
 .uvodni_container {
-  width: 430px;
+  width: 350px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: auto;
+  margin-top: 2%;
 }
 
 .uvodni_name {
