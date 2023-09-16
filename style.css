@@ -20,6 +20,8 @@ button {
   justify-content: center;
   margin: auto;
   margin-top: 2%;
+  background-color: #283e50;
+  gap: 1px;
 }
 
 .uvodni_name {
@@ -27,12 +29,10 @@ button {
   font-family: 'Lobster Two';
   font-weight: 900;
   padding: 5% 15% 5% 15%;
-
 }
 
 .uvodni_text,
 .uvodni_name {
-  background-color: #283e50;
   width: 100%;
 }
 
@@ -41,10 +41,6 @@ button {
   line-height: 1.5rem;
   font-weight: 300;
   padding: 2% 5% 10% 5%;
-}
-
-.uvod_img {
-  width: 100%;
 }
 
 a {
