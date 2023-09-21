@@ -28,6 +28,11 @@ button {
   background-color: #283e50;
 }
 
+.uvodni_container,
+.uvodni_img {
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
 .uvodni_name {
   font-size: 3rem;
   font-family: 'Lobster', cursive;
