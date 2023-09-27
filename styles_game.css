@@ -98,7 +98,6 @@ body {
 .button-home:hover {
   background-color: #1cbb96;
   outline: 1px solid rgb(255, 192, 245);
-  ;
 }
 
 .button-home:hover,
@@ -108,7 +107,7 @@ body {
 
 .item:hover,
 .item:focus {
-  background-color: #ffd8ffcd;
+  background-color: #ffd8ffe1;
   outline: 1px solid rgb(255, 192, 245);
   z-index: 1;
 }
