@@ -1,0 +1,114 @@
+html {
+  background: linear-gradient(153deg, rgba(97, 93, 173, 1) 35%, rgba(255, 200, 218, 1) 100%) fixed;
+  font-size: 25px;
+  color: white;
+  text-align: center;
+}
+
+body {
+  margin: auto;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.container {
+  min-width: 80vmin;
+  padding-left: 40px;
+  padding-right: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.uvodni_name {
+  width: 100%;
+  font-size: 2rem;
+  font-family: 'Lobster', cursive;
+  font-weight: 500;
+  margin: 0;
+  padding: 2.5% 8% 2.5% 8%;
+}
+
+.menu_container {
+  width: 100%;
+  font-size: 1rem;
+  justify-content: space-between;
+  padding: 2.5% 0 2.5% 0;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button_menu {
+  border: none;
+  background-color: #1fcca4;
+  ;
+}
+
+.button_menu,
+.button-reset {
+  border-radius: 3px;
+  padding: 3px;
+}
+
+.button-reset {
+  background-color: #0197f6;
+  border: none;
+}
+
+.game_play {
+  width: 100%;
+  aspect-ratio: 1/1;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(10, 1fr);
+  border: 1px solid black;
+}
+
+.item {
+  margin: 0;
+  padding: 0;
+  border: 1px solid rgb(118, 100, 118);
+  background-color: rgba(255, 255, 255, 0.29);
+}
+
+.game_properties {
+  display: flex;
+  gap: 10%
+}
+
+.button_player {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+}
+
+.button-reset:focus,
+.button-reset:hover {
+  background-color: #0090e9;
+  outline: 1px solid rgb(255, 192, 245);
+
+}
+
+.button-home:focus,
+.button-home:hover {
+  background-color: #1cbb96;
+  outline: 1px solid rgb(255, 192, 245);
+  ;
+}
+
+.button-home:hover,
+.button-reset:hover {
+  box-shadow: 10px 7.5px 15px rgb(132, 0, 255), -10px 7.5px 15px rgb(255, 0, 170), -10px -7.5px 15px rgb(238, 128, 252), 10px -7.5px 15px rgb(156, 9, 87)
+}
+
+.item:hover,
+.item:focus {
+  background-color: #ffd8ffcd;
+  outline: 1px solid rgb(255, 192, 245);
+  z-index: 1;
+}
