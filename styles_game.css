@@ -91,7 +91,6 @@ body {
 .button-reset:hover {
   background-color: #0090e9;
   outline: 1px solid rgb(255, 192, 245);
-
 }
 
 .button-home:focus,
