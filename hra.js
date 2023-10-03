@@ -1,5 +1,15 @@
 let currentPlayer = 'circle';
 const reset = document.querySelector('.button-reset');
+const playField = document.querySelector('.game_play');
+
+// Funkce, která vloží do hracího pole všechny hrací políčka
+const playBoardDef = () => {
+  for (let i = 0; i < 100; i++) {
+    playField.innerHTML += `<button class="item"></button>`;
+  }
+};
+
+// Funkce, která řeší mění obrázek hráče
 
 const playerChange = (event) => {
   if (currentPlayer === 'circle') {
@@ -12,12 +22,15 @@ const playerChange = (event) => {
     <img src="imgs/icons/circle.svg" alt="Hrají kolečka" />`;
   }
 };
+// Funkce, která řeší, když někdo chce hru resetovat, upozorní ho na to, že se hra resetuje
 const resetAlert = (event) => {
   const confirmation = confirm('Určitě chcete přerušit současnou hru?');
   if (confirmation === false) {
     event.preventDefault();
   }
 };
+// Funkce, která řeší co se stane s talčítkem, na které se klikne
+
 const processClick = (event) => {
   if (
     event.target.classList.contains('board__field--circle') ||
@@ -33,11 +46,16 @@ const processClick = (event) => {
   playerChange();
 };
 
-for (let i = 1; i <= 10; i++) {
-  const button = `button:nth-child(${i})`;
-  document.querySelector(button).addEventListener('click', processClick);
-}
+// Přidání funkcionality na prvních 10 tlačítek
+const gamePlayButton = () => {
+  for (let i = 1; i <= 10; i++) {
+    const button = `button:nth-child(${i})`;
+    document.querySelector(button).addEventListener('click', processClick);
+  }
+};
 
+playBoardDef();
+gamePlayButton();
 reset.addEventListener('click', resetAlert);
 
 // kód dle zadání, nelíbilo se mi to, tak to mám jinak:
