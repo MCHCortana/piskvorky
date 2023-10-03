@@ -44,13 +44,13 @@ body {
   align-items: center;
 }
 
-.button_menu {
+.button-home {
   border: none;
   background-color: #1fcca4;
   ;
 }
 
-.button_menu,
+.button-home,
 .button-reset {
   border-radius: 3px;
   padding: 3px;
@@ -108,4 +108,41 @@ body {
   background-color: #ffd8ffe1;
   outline: 1px solid rgb(255, 192, 245);
   z-index: 1;
+}
+
+/* ------------------------------JavaScript addition-----------------------------------------------------*/
+@keyframes grow {
+  0% {
+    background-size: 10%;
+  }
+
+  50% {
+    background-size: 50%;
+  }
+
+  100% {
+    /*full size =70% */
+    background-size: 70%;
+  }
+}
+
+.board__field--circle {
+  background-image: url("imgs/icons/circleColor.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-size: 70%;
+  background-position: center;
+  animation: grow 0.25s linear;
+}
+
+.board__field--circle {
+  fill: purple;
+}
+
+.board__field--cross {
+  background-image: url("imgs/icons/crossColor.svg");
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-position: center;
+  animation: grow 0.25s linear;
 }
