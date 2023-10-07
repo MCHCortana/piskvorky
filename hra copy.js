@@ -1,10 +1,8 @@
 let currentPlayer = 'circle';
 const reset = document.querySelector('.button-reset');
 const playField = document.querySelector('.game_play');
-const player = document.querySelector('.game_properties img');
 
 // Funkce, která vloží do hracího pole všechny hrací políčka
-
 const playBoardDef = () => {
   for (let i = 0; i < 100; i++) {
     playField.innerHTML += `<button class="item"></button>`;
@@ -16,19 +14,23 @@ const playBoardDef = () => {
 const playerChange = (event) => {
   if (currentPlayer === 'circle') {
     currentPlayer = 'cross';
-    player.src = 'imgs/icons/cross.svg';
-    player.alt = 'Hrají kolečka';
+    document.querySelector('.game_properties').innerHTML = `<p>HRAJE:</p>
+    <img src="imgs/icons/cross.svg" alt="Hrají kolečka" />`;
   } else {
     currentPlayer = 'circle';
-    player.src = 'imgs/icons/circle.svg';
-    player.alt = 'Hrají křížky';
+    document.querySelector('.game_properties').innerHTML = `<p>HRAJE:</p>
+    <img src="imgs/icons/circle.svg" alt="Hrají kolečka" />`;
   }
 };
-
 // Funkce, která řeší, když někdo chce hru resetovat, upozorní ho na to, že se hra resetuje
-
-const resetAlert = (event) => {
-  const confirmation = confirm('Určitě chcete přerušit současnou hru?');
+// const resetAlert = (event) => {
+//   const confirmation = confirm('Určitě chcete přerušit současnou hru?');
+//   if (confirmation === false) {
+//     event.preventDefault();
+//   }
+// };
+const repeat = (event) => {
+  const confirmation = confirm('zahraješ si znovu?');
   if (!confirmation) {
     event.preventDefault();
   }
@@ -61,7 +63,7 @@ const gamePlayButton = () => {
 
 playBoardDef();
 gamePlayButton();
-reset.addEventListener('click', resetAlert);
+reset.addEventListener('click', repeat);
 
 // kód dle zadání, nelíbilo se mi to, tak to mám jinak:
 
