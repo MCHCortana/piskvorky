@@ -1,3 +1,5 @@
+import { findWinner } from 'https://unpkg.com/piskvorky@0.1.4';
+
 let currentPlayer = 'circle';
 const reset = document.querySelector('.button-reset');
 const playField = document.querySelector('.game_play');
@@ -7,7 +9,7 @@ const player = document.querySelector('.game_properties img');
 
 const playBoardDef = () => {
   for (let i = 0; i < 100; i++) {
-    playField.innerHTML += `<button class="item"></button>`;
+    playField.innerHTML += `<button class="game_sq"></button>`;
   }
 };
 
@@ -28,15 +30,18 @@ const playerChange = (event) => {
 // Funkce, která řeší, když někdo chce hru resetovat, upozorní ho na to, že se hra resetuje
 
 const resetAlert = (event) => {
-  const confirmation = confirm('Určitě chcete přerušit současnou hru?');
+  const confirmation = confirm('Určitě chcete ukončit současnou hru?');
   if (!confirmation) {
     event.preventDefault();
-  }
+  } else location.reload();
 };
 
-// Funkce, která řeší co se stane s talčítkem, na které se klikne
+// Funkce, která řeší co se stane s tlačítkem, na které se klikne, včetně vyhodnocení hry
 
 const processClick = (event) => {
+  const gameButtons = Array.from(document.querySelectorAll('.game_sq'));
+  console.log(gameButtons);
+  const gameBoard = [];
   if (
     event.target.classList.contains('board__field--circle') ||
     event.target.classList.contains('board__field--cross')
@@ -49,11 +54,42 @@ const processClick = (event) => {
     event.target.classList.add('board__field--cross');
   }
   playerChange();
+  gameButtons.forEach((button) => {
+    if (button.classList.contains('board__field--circle')) {
+      gameBoard.push('o');
+    } else if (button.classList.contains('board__field--cross')) {
+      gameBoard.push('x');
+    } else {
+      gameBoard.push('_');
+    }
+  });
+  console.log(gameBoard);
+  const winner = findWinner(gameBoard);
+  const winnerSign = (winner) => {
+    if (winner === 'o') {
+      return '⭕️';
+    } else if (winner === 'x') {
+      return '❌';
+    } else {
+      return '⁉️ ... Kdo ví, je to remíza';
+    }
+  };
+
+  if (winner !== null) {
+    setTimeout(
+      () => alert(`Vyhrál hráč se značkou ${winnerSign(winner)}`),
+      500,
+    );
+    gameButtons.forEach((button) => (button.disabled = true));
+    setTimeout(resetAlert, 1000);
+  } else if (winner === 'tie') {
+    alert(`Nikdo nevyhrál ${winnerSign(winner)}`);
+  }
 };
 
-// Přidání funkcionality na prvních 10 tlačítek
+// Přidání funkcionality všech 100 tlačítek
 const gamePlayButton = () => {
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 1; i <= 100; i++) {
     const button = `button:nth-child(${i})`;
     document.querySelector(button).addEventListener('click', processClick);
   }
@@ -62,36 +98,3 @@ const gamePlayButton = () => {
 playBoardDef();
 gamePlayButton();
 reset.addEventListener('click', resetAlert);
-
-// kód dle zadání, nelíbilo se mi to, tak to mám jinak:
-
-// document
-//   .querySelector('button:nth-child(1)')
-//   .addEventListener('click', processClick);
-// document
-//   .querySelector('button:nth-child(2)')
-//   .addEventListener('click', processClick);
-// document
-//   .querySelector('button:nth-child(3)')
-//   .addEventListener('click', processClick);
-// document
-//   .querySelector('button:nth-child(4)')
-//   .addEventListener('click', processClick);
-// document
-//   .querySelector('button:nth-child(5)')
-//   .addEventListener('click', processClick);
-// document
-//   .querySelector('button:nth-child(6)')
-//   .addEventListener('click', processClick);
-// document
-//   .querySelector('button:nth-child(7)')
-//   .addEventListener('click', processClick);
-// document
-//   .querySelector('button:nth-child(8)')
-//   .addEventListener('click', processClick);
-// document
-//   .querySelector('button:nth-child(9)')
-//   .addEventListener('click', processClick);
-// document
-//   .querySelector('button:nth-child(10)')
-//   .addEventListener('click', processClick);

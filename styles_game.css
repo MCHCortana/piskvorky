@@ -47,11 +47,19 @@ body {
 .button-home {
   border: none;
   background-color: #1fcca4;
-  ;
+}
+
+.menu {
+  display: flex;
+  gap: 0.2rem;
 }
 
 .button-home,
 .button-reset {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+
   border-radius: 3px;
   padding: 3px;
 }
@@ -69,7 +77,7 @@ body {
   border: 1px solid black;
 }
 
-.item {
+.game_sq {
   margin: 0;
   padding: 0;
   border: 1px solid rgb(118, 100, 118);
@@ -103,8 +111,8 @@ body {
   box-shadow: 10px 7.5px 15px rgb(132, 0, 255), -10px 7.5px 15px rgb(255, 0, 170), -10px -7.5px 15px rgb(238, 128, 252), 10px -7.5px 15px rgb(156, 9, 87)
 }
 
-.item:hover,
-.item:focus {
+.game_sq:hover,
+.game_sq:focus {
   background-color: #ffd8ffe1;
   outline: 1px solid rgb(255, 192, 245);
   z-index: 1;
