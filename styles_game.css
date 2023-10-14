@@ -118,6 +118,10 @@ body {
   z-index: 1;
 }
 
+.play_again {
+  box-shadow: 10px 7.5px 15px rgb(132, 0, 255), -10px 7.5px 15px rgb(255, 0, 170), -10px -7.5px 15px rgb(238, 128, 252), 10px -7.5px 15px rgb(156, 9, 87)
+}
+
 /* ------------------------------JavaScript addition-----------------------------------------------------*/
 @keyframes grow {
   0% {

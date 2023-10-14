@@ -76,14 +76,11 @@ const processClick = (event) => {
   };
 
   if (winner !== null) {
-    setTimeout(
-      () => alert(`Vyhrál hráč se značkou ${winnerSign(winner)}`),
-      500,
-    );
+    setTimeout(() => {
+      alert(`Vyhrál hráč se značkou ${winnerSign(winner)}`);
+      document.querySelector('.button-reset').classList.add('play_again');
+    }, 500);
     gameButtons.forEach((button) => (button.disabled = true));
-    setTimeout(resetAlert, 1000);
-  } else if (winner === 'tie') {
-    alert(`Nikdo nevyhrál ${winnerSign(winner)}`);
   }
 };
 
