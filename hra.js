@@ -40,7 +40,7 @@ const resetAlert = (event) => {
 
 const processClick = (event) => {
   const gameButtons = Array.from(document.querySelectorAll('.game_sq'));
-  console.log(gameButtons);
+
   const gameBoard = [];
   if (
     event.target.classList.contains('board__field--circle') ||
@@ -63,7 +63,7 @@ const processClick = (event) => {
       gameBoard.push('_');
     }
   });
-  console.log(gameBoard);
+
   const winner = findWinner(gameBoard);
   const winnerSign = (winner) => {
     if (winner === 'o') {
