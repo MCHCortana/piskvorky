@@ -52,7 +52,7 @@ const playerChange = (event) => {
 // Funkce, která řeší, když někdo chce hru resetovat, upozorní ho na to, že se hra resetuje
 
 const resetAlert = (event) => {
-  const confirmation = confirm('Určitě chcete ukončit současnou hru?');
+  const confirmation = confirm('Chcete začít novou hru?');
   if (!confirmation) {
     event.preventDefault();
   } else location.reload();
