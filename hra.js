@@ -13,6 +13,28 @@ const playBoardDef = () => {
   }
 };
 
+// Funkce napojení NPC místo hráče křížku.
+const processAI = async (gameBoard, gameButtons) => {
+  const fields = document.querySelectorAll('.game_sq');
+  const response = await fetch(
+    'https://piskvorky.czechitas-podklady.cz/api/suggest-next-move',
+    {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        board: gameBoard,
+        player: 'x',
+      }),
+    },
+  );
+  const data = await response.json();
+  const { x, y } = data.position;
+  const field = fields[x + y * 10];
+  gameButtons.forEach((button) => (button.disabled = false));
+  field.click();
+};
 // Funkce, která řeší mění obrázek hráče
 
 const playerChange = (event) => {
@@ -40,21 +62,27 @@ const resetAlert = (event) => {
 
 const processClick = (event) => {
   const gameButtons = Array.from(document.querySelectorAll('.game_sq'));
-
   const gameBoard = [];
+
+  //Zablokuje klikání na již obsazené políčko bez ztráty tahu.
   if (
     event.target.classList.contains('board__field--circle') ||
     event.target.classList.contains('board__field--cross')
   ) {
     return alert('Políčko je již obsazené');
   }
+
+  //Který hráč je zrovna na řadě. Jakmile odehraje kolečko, zablokuje všechny políčko, aby nemohlo hrát 2x.
+
   if (currentPlayer === 'circle') {
     event.target.classList.add('board__field--circle');
+    gameButtons.map((button) => (button.disabled = true));
   } else {
     event.target.classList.add('board__field--cross');
   }
-  playerChange();
-  gameButtons.forEach((button) => {
+  //Vytváří pole hrací plochy pro funkce fidWinner a napojení NPC.
+
+  gameButtons.map((button) => {
     if (button.classList.contains('board__field--circle')) {
       gameBoard.push('o');
     } else if (button.classList.contains('board__field--cross')) {
@@ -64,6 +92,7 @@ const processClick = (event) => {
     }
   });
 
+  // Vyhodnocení hry a definice výherce.
   const winner = findWinner(gameBoard);
   const winnerSign = (winner) => {
     if (winner === 'o') {
@@ -75,7 +104,15 @@ const processClick = (event) => {
     }
   };
 
-  if (winner !== null) {
+  // Mění ikonku hráče v Menu.
+  playerChange();
+
+  // Na základě vyhodnocení tahu buď hru ukoncčí nebo zavolá tah křížku.
+  if (winner === null && currentPlayer === 'cross') {
+    setTimeout(() => {
+      processAI(gameBoard, gameButtons), 3000;
+    });
+  } else if (winner !== null) {
     setTimeout(() => {
       alert(`Vyhrál hráč se značkou ${winnerSign(winner)}`);
       document.querySelector('.button-reset').classList.add('play_again');
