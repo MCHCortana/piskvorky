@@ -59,6 +59,31 @@ const resetAlert = (event) => {
   } else location.reload();
 };
 
+// Jaký znak se má zobrazit při výhře
+const winnerSign = (winner) => {
+  if (winner === 'o') {
+    return '⭕️';
+  } else if (winner === 'x') {
+    return '❌';
+  } else {
+    return '⁉️ ... Kdo ví, je to remíza';
+  }
+};
+// Oznámení výherce
+const winnerAnnoucement = (winner) => {
+  myPopupElement.style.display = 'flex';
+  myPopupElement.style.transform = 'translate(-50%, -50%) scale(1)';
+  myPopupElement.innerHTML = `<h1>Vyhrál hráč se značkou ${winnerSign(
+    winner,
+  )}<h1>`;
+  document.querySelector('.overlay').classList.add('active');
+  myPopupElement.onclick = () => {
+    myPopupElement.style.display = 'none';
+    document.querySelector('.overlay').classList.remove('active');
+    document.querySelector('.button-reset').classList.add('play_again');
+  };
+};
+
 // Funkce, která řeší co se stane s tlačítkem, na které se klikne, včetně vyhodnocení hry
 
 const processClick = (event) => {
@@ -95,15 +120,7 @@ const processClick = (event) => {
 
   // Vyhodnocení hry a definice výherce.
   const winner = findWinner(gameBoard);
-  const winnerSign = (winner) => {
-    if (winner === 'o') {
-      return '⭕️';
-    } else if (winner === 'x') {
-      return '❌';
-    } else {
-      return '⁉️ ... Kdo ví, je to remíza';
-    }
-  };
+  winnerSign(winner);
 
   // Mění ikonku hráče v Menu.
   playerChange();
@@ -115,19 +132,8 @@ const processClick = (event) => {
     });
   } else if (winner !== null) {
     setTimeout(() => {
-      myPopupElement.style.display = 'flex';
-      myPopupElement.style.transform = 'translate(-50%, -50%) scale(1)';
-      myPopupElement.innerHTML = `<h1>Vyhrál hráč se značkou ${winnerSign(
-        winner,
-      )}<h1>`;
-      document.querySelector('.overlay').classList.add('active');
-      myPopupElement.onclick = () => {
-        myPopupElement.style.display = 'none';
-        document.querySelector('.overlay').classList.remove('active');
-        document.querySelector('.button-reset').classList.add('play_again');
-      };
+      winnerAnnoucement(winner);
     }, 500);
-
     gameButtons.forEach((button) => (button.disabled = true));
   }
 };
