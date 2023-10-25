@@ -1,3 +1,9 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
 html {
   background: linear-gradient(153deg, rgba(97, 93, 173, 1) 35%, rgba(255, 200, 218, 1) 100%) fixed;
   font-size: 25px;
@@ -170,8 +176,8 @@ body {
   z-index: 10;
   background: linear-gradient(-225deg, #FF057C 0%, #8D0B93 50%, #321575 100%);
   opacity: 80%;
-  width: 50%;
-  min-height: 50%;
+  width: 30vw;
+  min-height: 30%;
   justify-content: center;
   align-content: center;
   box-shadow: 10px 7.5px 15px rgb(132, 0, 255), -10px 7.5px 15px rgb(255, 0, 170), -10px -7.5px 15px rgb(238, 128, 252), 10px -7.5px 15px rgb(156, 9, 87)

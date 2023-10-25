@@ -75,7 +75,7 @@ const winnerAnnoucement = (winner) => {
   myPopupElement.style.transform = 'translate(-50%, -50%) scale(1)';
   myPopupElement.innerHTML = `<h1>Vyhrál hráč se značkou ${winnerSign(
     winner,
-  )}<h1>`;
+  )}</h1>`;
   document.querySelector('.overlay').classList.add('active');
   myPopupElement.onclick = () => {
     myPopupElement.style.display = 'none';
