@@ -158,3 +158,44 @@ body {
   background-position: center;
   animation: grow 0.25s linear;
 }
+
+.popup {
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 200ms ease-in-out;
+  border: 1px solid black;
+  border-radius: 10px;
+  z-index: 10;
+  background: linear-gradient(-225deg, #FF057C 0%, #8D0B93 50%, #321575 100%);
+  opacity: 80%;
+  width: 50%;
+  min-height: 50%;
+  justify-content: center;
+  align-content: center;
+  box-shadow: 10px 7.5px 15px rgb(132, 0, 255), -10px 7.5px 15px rgb(255, 0, 170), -10px -7.5px 15px rgb(238, 128, 252), 10px -7.5px 15px rgb(156, 9, 87)
+}
+
+.popup h1 {
+
+  margin: auto;
+  font-family: 'Lobster', cursive;
+}
+
+.overlay {
+  position: fixed;
+  opacity: 0;
+  transition: 200ms ease-in-out;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(243, 105, 195, 0.345);
+  pointer-events: none;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}

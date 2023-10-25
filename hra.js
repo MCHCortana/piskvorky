@@ -4,6 +4,7 @@ let currentPlayer = 'circle';
 const reset = document.querySelector('.button-reset');
 const playField = document.querySelector('.game_play');
 const player = document.querySelector('.game_properties img');
+const myPopupElement = document.querySelector('.popup');
 
 // Funkce, která vloží do hracího pole všechny hrací políčka
 
@@ -114,9 +115,19 @@ const processClick = (event) => {
     });
   } else if (winner !== null) {
     setTimeout(() => {
-      alert(`Vyhrál hráč se značkou ${winnerSign(winner)}`);
-      document.querySelector('.button-reset').classList.add('play_again');
+      myPopupElement.style.display = 'flex';
+      myPopupElement.style.transform = 'translate(-50%, -50%) scale(1)';
+      myPopupElement.innerHTML = `<h1>Vyhrál hráč se značkou ${winnerSign(
+        winner,
+      )}<h1>`;
+      document.querySelector('.overlay').classList.add('active');
+      myPopupElement.onclick = () => {
+        myPopupElement.style.display = 'none';
+        document.querySelector('.overlay').classList.remove('active');
+        document.querySelector('.button-reset').classList.add('play_again');
+      };
     }, 500);
+
     gameButtons.forEach((button) => (button.disabled = true));
   }
 };
