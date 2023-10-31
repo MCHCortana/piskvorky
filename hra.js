@@ -35,6 +35,7 @@ const processAI = async (gameBoard, gameButtons) => {
   const field = fields[x + y * 10];
   gameButtons.forEach((button) => (button.disabled = false));
   field.click();
+  console.log(response);
 };
 // Funkce, která řeší mění obrázek hráče
 
@@ -127,9 +128,7 @@ const processClick = (event) => {
 
   // Na základě vyhodnocení tahu buď hru ukoncčí nebo zavolá tah křížku.
   if (winner === null && currentPlayer === 'cross') {
-    setTimeout(() => {
-      processAI(gameBoard, gameButtons), 3000;
-    });
+    processAI(gameBoard, gameButtons);
   } else if (winner !== null) {
     setTimeout(() => {
       winnerAnnoucement(winner);
